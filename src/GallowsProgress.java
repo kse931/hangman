@@ -1,4 +1,4 @@
-public enum GallowsState {
+public enum GallowsProgress {
     FIRST{
         public String toString() {
             return "5 tries left"; // здесь вместо tries left надо рисовать виселицу в консоли но мне пиздец как впадлу

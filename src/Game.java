@@ -2,34 +2,9 @@ import java.util.*;
 
 public class Game {
 
-    static String[] strs = {
-            "стол", // это потом будет сосаться из txt файла
-            "книга",
-            "машина",
-            "человек",
-            "дерево",
-            "солнце",
-            "ветер",
-            "город",
-            "река",
-            "улица",
-            "квартира",
-            "телефон",
-            "компьютер",
-            "карандаш",
-            "животное",
-            "настроение",
-            "путешествие",
-            "возможность",
-            "решение"};
-
-    static List<String> dict = Arrays.asList(strs);
-
-    static void gameStart() {
+    static void gameStart(String word) {
 
         Scanner in = new Scanner(System.in);
-        int wordIndex = new Random().nextInt(dict.size()); // можно сделать отдельный
-        String word = dict.get(wordIndex);
 
         int mistakes = 0;
         boolean victory_condition = false;
@@ -41,16 +16,16 @@ public class Game {
         Set<Character> guessMistakes = new HashSet<>();
 
         char[] letters_in_initial_word = word.toCharArray();
+
         for (char c : letters_in_initial_word) {
             initialWord.add(c);
         }
 
         while (true) {
-            //System.out.print("\033[H\033[2J");
-            System.out.println(GallowsState.showState(mistakes));
-            System.out.println(GuessWordState.getState(word, guessWord));
+
+            System.out.println(GallowsProgress.showState(mistakes));
+            System.out.println(WordProgress.getState(word, guessWord));
             System.out.println("MISS: " + mistakes + " " + guessMistakes);
-            //System.out.println(guessMistakes);
             System.out.println("INSERT LETTER: ");
 
             char letter = in.next().charAt(0);
@@ -74,6 +49,7 @@ public class Game {
             }
 
         }
+        System.out.println(word);
         gameEnd(victory_condition);
     }
 
