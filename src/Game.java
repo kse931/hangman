@@ -2,56 +2,29 @@ import java.util.*;
 
 public class Game {
 
-    static String[] strs = {
-            "стол", // это потом будет сосаться из txt файла
-            "книга",
-            "машина",
-            "человек",
-            "дерево",
-            "солнце",
-            "ветер",
-            "город",
-            "река",
-            "улица",
-            "квартира",
-            "телефон",
-            "компьютер",
-            "карандаш",
-            "животное",
-            "настроение",
-            "путешествие",
-            "возможность",
-            "решение"};
-
-    static List<String> dict = Arrays.asList(strs);
-
-    static void gameStart() {
+    static void gameStart(String word) {
 
         Scanner in = new Scanner(System.in);
-        int wordIndex = new Random().nextInt(dict.size()); // можно сделать отдельный
-        String word = dict.get(wordIndex);
 
         int mistakes = 0;
         boolean victory_condition = false;
-
-        //System.out.println(word);
 
         Set<Character> initialWord = new HashSet<>();
         Set<Character> guessWord = new HashSet<>();
         Set<Character> guessMistakes = new HashSet<>();
 
         char[] letters_in_initial_word = word.toCharArray();
+
         for (char c : letters_in_initial_word) {
             initialWord.add(c);
         }
 
         while (true) {
-            //System.out.print("\033[H\033[2J");
-            System.out.println(GallowsState.showState(mistakes));
-            System.out.println(GuessWordState.getState(word, guessWord));
+            System.out.println("\n");
+            System.out.println(GallowsProgress.showState(mistakes));
+            System.out.println(WordProgress.getState(word, guessWord));
             System.out.println("MISS: " + mistakes + " " + guessMistakes);
-            //System.out.println(guessMistakes);
-            System.out.println("INSERT LETTER: ");
+            System.out.print("INSERT LETTER: ");
 
             char letter = in.next().charAt(0);
             int letterIndex = word.indexOf(letter);
@@ -64,7 +37,6 @@ public class Game {
             }
 
             if (mistakes == 6) {
-                //victory_condition = false;
                 break;
             }
 
@@ -74,15 +46,23 @@ public class Game {
             }
 
         }
-        gameEnd(victory_condition);
+        gameEnd(victory_condition, word);
     }
 
-    static void gameEnd(boolean victory) {
+    static void gameEnd(boolean victory, String word) {
         if (victory){
-            System.out.println("VICTORY");
+            System.out.println("\n");
+            System.out.println("SECRET WORD: " + word.toUpperCase());
+            System.out.println("VICTORY:D Congrats!!");
+            System.out.println("\n");
         }
         else{
-            System.out.println("WASTED");
+            System.out.println("\n");
+            System.out.println(GallowsProgress.showState(6));
+            System.out.println("           W A S T E D");
+            System.out.println("SECRET WORD: " + word.toUpperCase());
+            System.out.println("\n");
+
         }
     }
 }
