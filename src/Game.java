@@ -7,15 +7,15 @@ public class Game {
         Scanner in = new Scanner(System.in);
 
         int mistakes = 0;
-        boolean victory_condition = false;
+        boolean victoryCondition = false;
 
         Set<Character> initialWord = new HashSet<>();
         Set<Character> guessWord = new HashSet<>();
         Set<Character> guessMistakes = new HashSet<>();
 
-        char[] letters_in_initial_word = word.toCharArray();
+        char[] lettersInInitialWord = word.toCharArray();
 
-        for (char c : letters_in_initial_word) {
+        for (char c : lettersInInitialWord) {
             initialWord.add(c);
         }
 
@@ -41,12 +41,12 @@ public class Game {
             }
 
             if (guessWord.containsAll(initialWord)) {
-                victory_condition = true;
+                victoryCondition = true;
                 break;
             }
 
         }
-        gameEnd(victory_condition, word);
+        gameEnd(victoryCondition, word);
     }
 
     static void gameEnd(boolean victory, String word) {
