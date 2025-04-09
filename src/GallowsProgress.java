@@ -153,8 +153,8 @@ public enum GallowsProgress {
             "⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⡉⡀⠈⢁⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
             "⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣍⠛⠿⠿⠿⠿⠿⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀");
 
-    private String GallowsPic;
-    private int NumOfMistakes;
+    private final String GallowsPic;
+    private final int NumOfMistakes;
 
     GallowsProgress(int NumOfMistakes, String GallowsPic) {
         this.GallowsPic = GallowsPic;

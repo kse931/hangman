@@ -2,6 +2,9 @@ import java.util.*;
 
 public class Game {
 
+    static final int LAST_MISTAKE = 6;
+    static final String ENTER = "\n";
+
     static void gameStart(String word) {
 
         Scanner in = new Scanner(System.in);
@@ -20,11 +23,11 @@ public class Game {
         }
 
         while (true) {
-            System.out.println("\n");
+            System.out.println(ENTER);
             System.out.println(GallowsProgress.showState(mistakes));
             System.out.println(WordProgress.getState(word, guessWord));
-            System.out.println("MISS: " + mistakes + " " + guessMistakes);
-            System.out.print("INSERT LETTER: ");
+            System.out.println("Ошибки: " + mistakes + " " + guessMistakes);
+            System.out.print("Введите букву: ");
 
             char letter = in.next().charAt(0);
             int letterIndex = word.indexOf(letter);
@@ -36,7 +39,7 @@ public class Game {
                 guessMistakes.add(letter);
             }
 
-            if (mistakes == 6) {
+            if (mistakes == LAST_MISTAKE) {
                 break;
             }
 
@@ -51,17 +54,17 @@ public class Game {
 
     static void gameEnd(boolean victory, String word) {
         if (victory){
-            System.out.println("\n");
-            System.out.println("SECRET WORD: " + word.toUpperCase());
-            System.out.println("VICTORY:D Congrats!!");
-            System.out.println("\n");
+            System.out.println(ENTER);
+            System.out.println("Слово: " + word.toUpperCase());
+            System.out.println("Победа:D Поздравляем!!");
+            System.out.println(ENTER);
         }
         else{
-            System.out.println("\n");
-            System.out.println(GallowsProgress.showState(6));
-            System.out.println("           W A S T E D");
-            System.out.println("SECRET WORD: " + word.toUpperCase());
-            System.out.println("\n");
+            System.out.println(ENTER);
+            System.out.println(GallowsProgress.showState(LAST_MISTAKE));
+            System.out.println("           П О М Е Р");
+            System.out.println("Слово: " + word.toUpperCase());
+            System.out.println(ENTER);
 
         }
     }

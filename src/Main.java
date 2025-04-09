@@ -7,13 +7,13 @@ class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Start a new game?(y/n)");
+            System.out.println("Начать новую игру?(д/н)");
             char answer = scanner.next().charAt(0);
             switch (answer) {
-                case 'y':
+                case 'д':
                     Game.gameStart(GetWord.getRandomWord());
                     break;
-                case 'n':
+                case 'н':
                     exit(0);
             }
         }
