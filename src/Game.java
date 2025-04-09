@@ -5,7 +5,7 @@ public class Game {
     static final int LAST_MISTAKE = 6;
     static final String ENTER = "\n";
 
-    static void gameStart(String word) {
+    static public void gameStart(String word) {
 
         Scanner inputScanner = new Scanner(System.in);
 

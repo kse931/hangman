@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
@@ -11,7 +12,12 @@ class Main {
             char answer = inputScanner.next().charAt(0);
             switch (answer) {
                 case 'д':
-                    Game.gameStart(GetWord.getRandomWord());
+                    try {
+                        Game.gameStart(GetWord.getRandomWordFromFile());
+                    } catch (IOException e) {
+                        //e.printStackTrace();
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 'н':
                     exit(0);

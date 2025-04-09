@@ -1,33 +1,25 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class GetWord {
-    static String[] arrayOfWords = {
-            "стол", // это потом будет сосаться из txt файла
-            "книга",
-            "машина",
-            "человек",
-            "дерево",
-            "солнце",
-            "ветер",
-            "город",
-            "река",
-            "улица",
-            "квартира",
-            "телефон",
-            "компьютер",
-            "карандаш",
-            "животное",
-            "настроение",
-            "путешествие",
-            "возможность",
-            "решение"};
 
-    static String getRandomWord() {
-        List<String> dictionary = Arrays.asList(arrayOfWords);
-        int wordIndex = new Random().nextInt(dictionary.size());
-        return dictionary.get(wordIndex);
+    static String filePath = "src/words.txt";
+
+    static public String getRandomWordFromFile() throws IOException {
+        String result = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            int count = 0;
+            String line;
+            while ((line = reader.readLine()) != null) {
+                count++;
+                if (ThreadLocalRandom.current().nextInt(count) == 0) {
+                    result = line;
+                }
+            }
+        }
+        return result;
     }
 
 }
