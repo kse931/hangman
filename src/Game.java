@@ -7,7 +7,7 @@ public class Game {
 
     static void gameStart(String word) {
 
-        Scanner in = new Scanner(System.in);
+        Scanner inputScanner = new Scanner(System.in);
 
         int mistakes = 0;
         boolean victoryCondition = false;
@@ -29,7 +29,7 @@ public class Game {
             System.out.println("Ошибки: " + mistakes + " " + guessMistakes);
             System.out.print("Введите букву: ");
 
-            char letter = in.next().charAt(0);
+            char letter = inputScanner.next().charAt(0);
             int letterIndex = word.indexOf(letter);
 
             guessWord.add(letter);
@@ -52,7 +52,7 @@ public class Game {
         gameEnd(victoryCondition, word);
     }
 
-    static void gameEnd(boolean victory, String word) {
+    static private void gameEnd(boolean victory, String word) {
         if (victory){
             System.out.println(ENTER);
             System.out.println("Слово: " + word.toUpperCase());
